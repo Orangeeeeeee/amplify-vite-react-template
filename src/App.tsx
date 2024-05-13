@@ -23,20 +23,18 @@ function App() {
     client.models.Todo.delete({ id })
   }
 
-  return (
-        
+  return (   
     <Authenticator>
       {({ signOut, user }) => (
     <main>
-      <h1>My todos</h1>
+      <h1>{user?.signInDetails?.loginId}'s todos</h1>
       <button onClick={createTodo}>+ new</button>
       <ul>
-        {todos.map((todo) => (
-          <li 
+        {todos.map(todo => <li 
             onClick={() => deleteTodo(todo.id)}
             key={todo.id}>
-            {todo.content}</li>
-        ))}
+            {todo.content}
+          </li>)}
       </ul>
       <div>
         🥳 App successfully hosted. Try creating a new todo.
